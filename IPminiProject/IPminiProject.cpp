@@ -19,7 +19,7 @@ int main(int argc, char *argv[]) {
 
 		Mat resizedImage = resize(fileName, width, height); // pass fileName into resize function to produce resized version of that image
 		imshow(fileName, resizedImage);
-		break;
+		//break;
 	}
 	
 	// exit application when key pressed
@@ -29,9 +29,7 @@ int main(int argc, char *argv[]) {
 
 Mat resize(string path, int width, int height) {
 	Mat image = imread(path); // load image with inputted file path
-	Mat scaledImage(width, height, CV_8UC3); // CV_8U == 8-bit uchar
-
-	imshow("original", image);
+	Mat scaledImage(height, width, CV_8UC3); // CV_8UC3 == 8-bit uchar 3 channels
 
 	cout << "----------" << endl;
 	cout << "Processing: " << path << ", " << "[" << image.cols << ", " << image.rows << "]" << " " << image.type() << endl;
@@ -44,18 +42,22 @@ Mat resize(string path, int width, int height) {
 
 	cout << "Scale factors: " << "[" << xFactor << ", " << yFactor << "]" << endl;
 
-	for (int i = 0; i < image.cols; i++) {
-		for (int j = 0; j < image.rows; j++) {
-			int x = i * xFactor;
-			int y = j * yFactor;
+	int rows = scaledImage.rows;
+	int cols = scaledImage.cols;
 
-			// cout << scaledImage.at<uchar>(x, y) << " ";// = image.at<uchar>(i, j);
-			// cout << image.at<uchar>(i, j) << " ";
-			// scaledImage.at<Vec3f>(x, y) = Vec3f(0, 0, 0);
-			scaledImage.at<uchar>(x, y) = image.at<uchar>(i, j);
+	for (int i = 0; i < cols; i++) {
+		for (int j = 0; j < rows; j++) {
+
+			int x = i / xFactor;
+			int y = j / yFactor;
+
+			Vec3b pixel = image.at<Vec3b>(y, x);
+
+			scaledImage.at<Vec3b>(j, i) = pixel;
 		}
 	}
 
+	imshow("org", image);
 	return scaledImage;
 }
 
