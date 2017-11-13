@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
-    <LocalDebuggerCommandArguments>stalin.jpg 253 320 tractor.PNG 400 200 woman.jpg 1244 968</LocalDebuggerCommandArguments>
+    <LocalDebuggerCommandArguments>notlena.jpg 2000 2000 notlena2.jpg 200 300 notlena3.jpg 600 200</LocalDebuggerCommandArguments>
     <DebuggerFlavor>WindowsLocalDebugger</DebuggerFlavor>
   </PropertyGroup>
 </Project>
