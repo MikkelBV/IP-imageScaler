@@ -8,7 +8,7 @@ using namespace cv;
 
 // declare functions before main()
 Mat resize(string path, int width, int height);
-Mat resizeBM(string path, int width, int height);
+Mat resizeFM(string path, int width, int height);
 
 int main(int argc, char *argv[]) {
 	// process each image inputted through command line
@@ -55,7 +55,7 @@ Mat resize(string path, int width, int height) {
 	return scaledImage;
 }
 
-Mat resizeBM(string path, int width, int height) {
+Mat resizeFM(string path, int width, int height) {
 	Mat image = imread(path); // load image with inputted file path
 	Mat scaledImage(height, width, CV_8UC3); // CV_8UC3 == 8-bit uchar 3 channels
 
