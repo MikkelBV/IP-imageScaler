@@ -44,12 +44,10 @@ Mat resize(string path, int width, int height) {
 
 	for (int i = 0; i < cols; i++) {
 		for (int j = 0; j < rows; j++) {
-
 			int x = i / xFactor;
 			int y = j / yFactor;
 
 			Vec3b pixel = image.at<Vec3b>(y, x);
-
 			scaledImage.at<Vec3b>(j, i) = pixel;
 		}
 	}
