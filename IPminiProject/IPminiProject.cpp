@@ -7,7 +7,7 @@ using namespace std;
 using namespace cv;
 
 // declare functions before main()
-Mat resizeFM(string path, int width, int height);
+Mat resize(string path, int width, int height);
 Mat resizeBM(string path, int width, int height);
 
 int main(int argc, char *argv[]) {
@@ -18,7 +18,7 @@ int main(int argc, char *argv[]) {
 		int width = stoi(argv[i + 1]);
 		int height = stoi(argv[i + 2]);
 
-		Mat resizedImage = resizeFM(fileName, width, height); // pass fileName into resize function to produce resized version of that image
+		Mat resizedImage = resize(fileName, width, height); // pass fileName into resize function to produce resized version of that image
 		imshow(fileName, resizedImage);
 	}
 	
@@ -27,7 +27,7 @@ int main(int argc, char *argv[]) {
 	return 0;
 }
 
-Mat resizeFM(string path, int width, int height) {
+Mat resize(string path, int width, int height) {
 	Mat image = imread(path); // load image with inputted file path
 	Mat scaledImage(height, width, CV_8UC3); // CV_8UC3 == 8-bit uchar 3 channels
 
